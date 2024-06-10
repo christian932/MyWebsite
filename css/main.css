@@ -103,6 +103,13 @@ h:hover {
 	background-color: transparent;
 }
 
+.custom-link {
+  color: #7099f3;
+}
+
+.custom-link:hover {
+	color: #97b8ff;
+}
 
 /** 
  * ===================================================================
