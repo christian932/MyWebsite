@@ -105,10 +105,13 @@ h:hover {
 
 .custom-link {
   color: #7099f3;
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 .custom-link:hover {
 	color: #97b8ff;
+  background-color: transparent;
 }
 
 /** 
