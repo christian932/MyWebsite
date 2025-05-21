@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+
+<html lang="en">
+	<head>
+
+		<!--- basic page needs =========================== -->
+		<meta charset="utf-8">
+			<title>Calc</title>
+			<meta name="description" content="">  
+			<meta name="author" content="">
+			<!-- mobile specific metas ======================= -->
+			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+			<!-- CSS ========================== -->
+			<!--<link rel="stylesheet" href="css/main.css">--> 
+			<link rel="stylesheet" href="css/custom.css">     
+			<link rel="icon" type="image/png" href="st.png">
+			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+			<!-- script ========================== -->   
+				<script src="js/modernizr.js"></script>
+				<script src="js/pace.min.js"></script>
+			<!-- favicons ========================== -->
+
+		<style>
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				background-color: white;
+				font-family: sans-serif;
+			}
+
+			.calculator {
+				display: grid;
+				grid-template-columns: repeat(4, 78px);
+				gap: 10px;
+				vertical-align: middle;
+				align-items: center;
+				text-align: center;
+				padding-left: 1%;
+				padding-top: 5%;
+				background-color: rgb(255, 255, 255);
+			}
+
+			.display {
+				width: 20rem;
+				height: 60px;
+				font-size: 2rem;
+				text-align: right;
+				padding: 10px;
+				border: 1px solid #ccc;
+				border-radius: 10px;
+				background-color: #f4f4f4;
+				margin-bottom: 10px;
+			}
+
+			button {
+				width: 70px;
+				height: 70px;
+				font-size: 1.5rem;
+				border: 1px solid #ccc;
+				border-radius: 10px;
+				background-color: #f4f4f4;
+				cursor: pointer;
+			}
+
+			button:hover {
+				background-color: #eee;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<input type="text" class="display" id="display" disabled />
+			<div class="calculator">
+			<button onclick="append('1')">1</button>
+			<button onclick="append('2')">2</button>
+			<button onclick="append('3')">3</button>
+			<button onclick="append('+')">+</button>
+
+			<button onclick="append('4')">4</button>
+			<button onclick="append('5')">5</button>
+			<button onclick="append('6')">6</button>
+			<button onclick="append('-')">-</button>
+
+			<button onclick="append('7')">7</button>
+			<button onclick="append('8')">8</button>
+			<button onclick="append('9')">9</button>
+			<button onclick="append('*')">*</button>
+
+			<button onclick="append('0')">0</button>
+			<button onclick="clearDisplay()">C</button>
+			<button onclick="calculate()">=</button>
+			<button onclick="append('/')">/</button>
+			</div>
+		</div>
+
+		<script>
+			const display = document.getElementById('display');
+
+			function append(value) {
+			display.value += value;
+			}
+
+			function clearDisplay() {
+			display.value = '';
+			}
+			// Working calc
+			// function calculate() {
+			// try {
+			// 	display.value = eval(display.value);
+			// } catch (e) {
+			// 	display.value = 'Error';
+			// }
+			// }
+
+			// Non working calc
+			function calculate() {
+				try {
+					// Split the input by the operator
+					const expression = display.value;
+					const operators = ['+', '-', '*', '/'];
+					let operator = null;
+					let numbers = [];
+					for (let op of operators) {
+						if (expression.includes(op)) {
+							operator = op;
+							numbers = expression.split(op).map(num => num.trim());
+							break;
+						}
+					}
+					if (operator && numbers.length === 2) {
+						// Concatenate the numbers as strings
+						display.value = numbers[0] + numbers[1];
+					} else {
+						display.value = 'Error';
+					}
+				} catch (e) {
+					display.value = 'Error';
+				}
+			}
+		</script>
+	</body>
+</html>
