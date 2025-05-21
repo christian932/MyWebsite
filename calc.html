@@ -1,38 +1,25 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
-
-<html lang="en">
+<html class="no-js" lang="en">
 	<head>
-
-		<!--- basic page needs =========================== -->
 		<meta charset="utf-8">
-			<title>Calc</title>
-			<meta name="description" content="">  
-			<meta name="author" content="">
-			<!-- mobile specific metas ======================= -->
-			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-			<!-- CSS ========================== -->
-			<!--<link rel="stylesheet" href="css/main.css">--> 
-			<link rel="stylesheet" href="css/custom.css">     
-			<link rel="icon" type="image/png" href="st.png">
-			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-			<!-- script ========================== -->   
-				<script src="js/modernizr.js"></script>
-				<script src="js/pace.min.js"></script>
-			<!-- favicons ========================== -->
-
+		<title>Calc</title>
+		<meta name="description" content="">  
+		<meta name="author" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="css/custom.css">     
+		<link rel="icon" type="image/png" href="st.png">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel = "stylesheet">
+		<script src="js/modernizr.js"></script>
+		<script src="js/pace.min.js"></script>
 		<style>
 			body {
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				height: 90vh;
-				background-color: rgb(255, 255, 255);
+				height: 100vh;
+				background-color: white;
 				font-family: sans-serif;
 			}
-
 			.calculator {
 				display: grid;
 				grid-template-columns: repeat(4, 78px);
@@ -44,7 +31,6 @@
 				padding-top: 5%;
 				background-color: rgb(255, 255, 255);
 			}
-
 			.display {
 				width: 20rem;
 				height: 60px;
@@ -56,19 +42,23 @@
 				background-color: #f4f4f4;
 				margin-bottom: 10px;
 			}
-
-			button {
+			.calculator button {
 				width: 70px;
 				height: 70px;
 				font-size: 1.5rem;
 				border: 1px solid #ccc;
 				border-radius: 10px;
-				background-color: #f4f4f4;
+				background-color: #f4f4f4 !important;
+				color: #313131 !important;
 				cursor: pointer;
+				-webkit-tap-highlight-color: transparent;
 			}
-
-			button:hover {
-				background-color: #eee;
+			.calculator button:hover,
+			.calculator button:focus,
+			.calculator button:active {
+				background-color: #eee !important;
+				color: #000000 !important;
+				outline: none;
 			}
 		</style>
 	</head>
@@ -76,29 +66,24 @@
 		<div>
 			<input type="text" class="display" id="display" disabled />
 			<div class="calculator">
-
-			<button onclick="append('7')">7</button>
-			<button onclick="append('8')">8</button>
-			<button onclick="append('9')">9</button>
-			<button onclick="append('+')">+</button>
-
-			<button onclick="append('4')">4</button>
-			<button onclick="append('5')">5</button>
-			<button onclick="append('6')">6</button>
-			<button onclick="append('-')">-</button>
-
-			<button onclick="append('1')">1</button>
-			<button onclick="append('2')">2</button>
-			<button onclick="append('3')">3</button>
-			<button onclick="append('*')">*</button>
-
-			<button onclick="clearDisplay()">C</button>
-			<button onclick="append('0')">0</button>
-			<button onclick="calculate()">=</button>
-			<button onclick="append('/')">/</button>
+				<button onclick="append('1')">1</button>
+				<button onclick="append('2')">2</button>
+				<button onclick="append('3')">3</button>
+				<button onclick="append('+')">+</button>
+				<button onclick="append('4')">4</button>
+				<button onclick="append('5')">5</button>
+				<button onclick="append('6')">6</button>
+				<button onclick="append('-')">-</button>
+				<button onclick="append('7')">7</button>
+				<button onclick="append('8')">8</button>
+				<button onclick="append('9')">9</button>
+				<button onclick="append('*')">*</button>
+				<button onclick="append('0')">0</button>
+				<button onclick="clearDisplay()">C</button>
+				<button onclick="calculate()">=</button>
+				<button onclick="append('/')">/</button>
 			</div>
 		</div>
-
 		<script>
 			const display = document.getElementById('display');
 			function append(value) {
@@ -107,20 +92,9 @@
 				}
 				display.value += value;
 			}
-
 			function clearDisplay() {
-			display.value = '';
+				display.value = '';
 			}
-			// Working calc
-			// function calculate() {
-			// try {
-			// 	display.value = eval(display.value);
-			// } catch (e) {
-			// 	display.value = 'Error';
-			// }
-			// }
-
-			// Non working calc
 			function calculate() {
 				try {
 					const expression = display.value;
