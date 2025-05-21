@@ -120,21 +120,17 @@
 			// Non working calc
 			function calculate() {
 				try {
-					// Split the input by the operator
 					const expression = display.value;
-					const operators = ['+', '-', '*', '/'];
-					let operator = null;
-					let numbers = [];
-					for (let op of operators) {
-						if (expression.includes(op)) {
-							operator = op;
-							numbers = expression.split(op).map(num => num.trim());
-							break;
+					// Check if the expression contains only numbers and operators (+, -, *, /)
+					if (/^[0-9\s]*(?:[+*\/-][0-9\s]*)+$/.test(expression)) {
+						// Split by any operator (+, -, *, /)
+						const numbers = expression.split(/[+*\/-]/).map(num => num.trim());
+						// Verify all segments are valid numbers
+						if (numbers.every(num => num !== '' && !isNaN(num))) {
+							display.value = numbers.join('');
+						} else {
+							display.value = 'Error';
 						}
-					}
-					if (operator && numbers.length === 2) {
-						// Concatenate the numbers as strings
-						display.value = numbers[0] + numbers[1];
 					} else {
 						display.value = 'Error';
 					}
