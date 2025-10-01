@@ -125,7 +125,7 @@
 			if (i < text.length) {
 				display.value += text.charAt(i);
 				autoResize(); // resize as it types
-				typingTimeout = setTimeout(() => typeWriter(text, i + 1), 40); // faster typing
+				typingTimeout = setTimeout(() => typeWriter(text, i + 1), 25); // faster typing
 			}
 		}
 
