@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Calc</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background-color: white;
+			font-family: sans-serif;
+		}
+
+		.calculator {
+			display: grid;
+			grid-template-columns: repeat(4, 78px);
+			gap: 10px;
+			vertical-align: middle;
+			align-items: center;
+			text-align: center;
+			padding-left: 1%;
+			padding-top: 5%;
+			background-color: rgb(255, 255, 255);
+		}
+
+		.display {
+			width: 20rem;
+			height: 200px;
+			font-size: 2rem;
+			text-align: left;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 10px;
+			background-color: #f4f4f4;
+			margin-bottom: 10px;
+			color: #000000 !important;
+			resize: none;                /* prevent user resizing */
+     		overflow-wrap: break-word;   /* wrap long words */
+      		white-space: pre-wrap;       /* allow wrapping */
+		}
+
+		.calculator button {
+			width: 70px;
+			height: 70px;
+			font-size: 1.5rem;
+			border: 1px solid #ccc;
+			border-radius: 10px;
+			background-color: #f4f4f4 !important;
+			color: #313131 !important;
+			cursor: pointer;
+			-webkit-tap-highlight-color: transparent;
+		}
+
+		.calculator button:hover,
+		.calculator button:focus,
+		.calculator button:active {
+			background-color: #eee !important;
+			color: #000000 !important;
+			outline: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<textarea class="display" id="display" disabled></textarea>
+		<div class="calculator">
+			<button onclick="append('1')">1</button>
+			<button onclick="append('2')">2</button>
+			<button onclick="append('3')">3</button>
+			<button onclick="append('+')">+</button>
+			<button onclick="append('4')">4</button>
+			<button onclick="append('5')">5</button>
+			<button onclick="append('6')">6</button>
+			<button onclick="append('-')">-</button>
+			<button onclick="append('7')">7</button>
+			<button onclick="append('8')">8</button>
+			<button onclick="append('9')">9</button>
+			<button onclick="append('*')">*</button>
+			<button onclick="append('0')">0</button>
+			<button onclick="clearDisplay()">C</button>
+			<button onclick="calculate()">=</button>
+			<button onclick="append('/')">/</button>
+		</div>
+	</div>
+
+	<script>
+		const display = document.getElementById('display');
+		let typingTimeout;   // holds the timeout reference
+		let typingStopped = false; // flag to stop typing
+
+		function append(value) {
+			if (display.value === 'Error') {
+				display.value = '';
+			}
+			display.value += value;
+		}
+
+		function clearDisplay() {
+			display.value = '';
+			typingStopped = true; // stop typing animation
+			clearTimeout(typingTimeout); // cancel pending timeout
+		}
+
+		// Typing effect function
+		function typeWriter(text, i = 0) {
+			if (typingStopped) return; // stop if clear was pressed
+			if (i < text.length) {
+				display.value += text.charAt(i);
+				typingTimeout = setTimeout(() => typeWriter(text, i + 1), 40); // faster typing
+			}
+		}
+
+		// Show "Welcome to the calculator"
+		function showWelcome() {
+			clearDisplay(); // reset first
+			typingStopped = false; // allow typing again
+			typeWriter("Hi! Wecome to ChatGPT. Is there anything I can assist you with today?");
+		}
+
+		// Modified calculate function
+		function calculate() {
+			showWelcome();
+		}
+
+		// Listen for Enter key
+		document.addEventListener('keydown', function (event) {
+			if (event.key === 'Enter') {
+				event.preventDefault();
+				showWelcome();
+			}
+		});
+	</script>
+</body>
+
+</html>
