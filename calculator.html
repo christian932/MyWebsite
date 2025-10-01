@@ -29,18 +29,25 @@
 
 		.display {
 			width: 20rem;
-			height: 200px;
+			height: 60px;
 			font-size: 2rem;
 			text-align: left;
-			padding: 10px;
+			padding-top: 10px;
+			padding-left: 10px;
+			padding-right: 10px;
 			border: 1px solid #ccc;
 			border-radius: 10px;
 			background-color: #f4f4f4;
 			margin-bottom: 10px;
 			color: #000000 !important;
-			resize: none;                /* prevent user resizing */
-     		overflow-wrap: break-word;   /* wrap long words */
-      		white-space: pre-wrap;       /* allow wrapping */
+			resize: none;
+			/* prevent user resizing */
+			overflow-wrap: break-word;
+			/* wrap long words */
+			white-space: pre-wrap;
+			/* allow wrapping */
+			overflow: hidden;
+			/* hide scrollbar */
 		}
 
 		.calculator button {
@@ -93,6 +100,12 @@
 		let typingTimeout;   // holds the timeout reference
 		let typingStopped = false; // flag to stop typing
 
+		// auto-resize textarea
+		function autoResize() {
+			display.style.height = 'auto';           // reset
+			display.style.height = display.scrollHeight + 'px'; // expand
+		}
+
 		function append(value) {
 			if (display.value === 'Error') {
 				display.value = '';
@@ -111,6 +124,7 @@
 			if (typingStopped) return; // stop if clear was pressed
 			if (i < text.length) {
 				display.value += text.charAt(i);
+				autoResize(); // resize as it types
 				typingTimeout = setTimeout(() => typeWriter(text, i + 1), 40); // faster typing
 			}
 		}
