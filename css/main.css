@@ -2821,3 +2821,344 @@ footer .copyright span:last-child::after {
 @media (max-width: 768px) {
    .work-grid { grid-template-columns: 1fr; }
 }
+
+/* =============================================
+   WORK EXPERIENCE — Card Timeline Upgrade
+   Add at bottom of main.css (overrides old styles)
+   ============================================= */
+
+#resume .timeline-block {
+  position: relative;
+  padding-top: 0;
+  margin-bottom: 2.4rem;
+  background: #fff;
+  border-radius: 6px;
+  border-left: 4px solid #7099f3;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  padding: 2.4rem 2.8rem;
+  overflow: hidden;
+}
+
+#resume .timeline-block:hover {
+  box-shadow: 0 6px 24px rgba(112,153,243,0.13);
+  transform: translateY(-2px);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+/* Hide the old dot icon — not needed with card style */
+#resume .timeline-ico {
+  display: none;
+}
+
+/* Remove the old vertical line */
+#resume .timeline-wrap::before {
+  display: none;
+}
+
+#resume .timeline-header {
+  float: none;
+  width: 100%;
+  padding-right: 0;
+  text-align: left;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+#resume .timeline-header h3 {
+  margin-bottom: 0;
+  font-size: 1.9rem;
+  color: #313131;
+}
+
+#resume .timeline-header p {
+  font-family: Arial, sans-serif;
+  font-size: 1.2rem;
+  color: #7099f3;
+  text-transform: uppercase;
+  letter-spacing: 0.08rem;
+  font-weight: bold;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+#resume .timeline-content {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+#resume .timeline-content h4 {
+  font-size: 1.4rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0;
+}
+
+#resume .timeline-content h4::after {
+  display: none;
+}
+
+#resume .timeline-content p {
+  font-size: 1.5rem;
+  color: #6e6e6e;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* Mobile: stack header vertically */
+@media only screen and (max-width: 768px) {
+  #resume .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #resume .timeline-header p {
+    white-space: normal;
+  }
+  #resume .timeline-header,
+  #resume .timeline-content {
+    padding-left: 0;
+  }
+}
+
+/* ==== About Section Upgrade ==== */
+
+#about {
+  background: #ffffff;
+}
+
+#about .section-intro {
+  max-width: 800px;
+}
+
+.intro-info {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  max-width: 760px;
+  margin: 4.2rem auto 0;
+  text-align: left;
+}
+
+.intro-info img {
+  flex: 0 0 12rem;
+  width: 12rem;
+  height: 12rem;
+  margin: 0;
+  border: 4px solid rgba(112, 153, 243, 0.2);
+  object-fit: cover;
+}
+
+.intro-info .lead {
+  padding: 0;
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.7;
+}
+
+.about-content {
+  max-width: 980px;
+  margin: 0 auto 4.5rem;
+}
+
+.about-content h3 {
+  color: #313131;
+  margin-bottom: 1.8rem;
+}
+
+.about-content p {
+  color: #6e6e6e;
+  font-size: 1.55rem;
+  line-height: 1.8;
+}
+
+.about-focus {
+  margin-top: 3rem;
+  padding: 2.2rem 2.4rem;
+  background: #f7f9ff;
+  border-left: 4px solid #7099f3;
+  border-radius: 4px;
+}
+
+.about-focus h4 {
+  color: #313131;
+  font-size: 1.4rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.about-focus ul {
+  margin: 0;
+  padding-left: 1.8rem;
+}
+
+.about-focus li {
+  color: #6e6e6e;
+  font-size: 1.45rem;
+  line-height: 1.8;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2.6rem;
+}
+
+.skills-tags span {
+  display: inline-block;
+  background: rgba(112, 153, 243, 0.12);
+  color: #4f70c7;
+  font-family: Arial, sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  padding: 0.7rem 1.1rem;
+  border-radius: 3px;
+}
+
+.about-note {
+  font-size: 1.45rem !important;
+  margin-bottom: 1.6rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .intro-info {
+    display: block;
+    text-align: center;
+  }
+
+  .intro-info img {
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+
+  .intro-info .lead {
+    text-align: center;
+  }
+}
+
+/* ==== Professional Highlights / Stats (Light Mode) ==== */
+
+#stats {
+  background: #ebebeb; /* Light grey to match other sections */
+  padding: 10rem 0;
+  text-align: center;
+}
+
+#stats .row {
+  max-width: 1080px;
+}
+
+.stats-heading {
+  margin-bottom: 4.8rem;
+}
+
+.stats-heading h5 {
+  color: #7099f3;
+  font-size: 1.5rem;
+  letter-spacing: 0.35rem;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+
+.stats-heading h2 {
+  color: #313131;
+  font-size: 3.2rem;
+  line-height: 1.3;
+  margin-bottom: 0;
+}
+
+#stats .stats-list {
+  display: flex;
+  align-items: stretch;
+  gap: 2rem; /* Add spacing between cards */
+}
+
+#stats .stat {
+  position: relative;
+  min-height: 20rem;
+  padding: 3.5rem 2.5rem 3rem;
+  background: #ffffff; /* White cards on grey background */
+  border-bottom: 4px solid #7099f3; /* Highlight at the bottom instead of the side */
+  text-align: left;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  flex: 1; /* Ensure equal sizing in the row */
+}
+
+#stats .stat:hover {
+  transform: translateY(-0.8rem);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+#stats .stat-count {
+  display: inline-block;
+  margin: 0;
+  color: #313131;
+  font-family: "poppins-semibold", sans-serif;
+  font-size: 5.2rem;
+  line-height: 1;
+}
+
+#stats .stat-suffix {
+  display: inline-block;
+  margin-left: 0.2rem;
+  color: #7099f3;
+  font-family: "poppins-semibold", sans-serif;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+#stats .stat-title {
+  max-width: 24rem;
+  margin: 1.8rem 0 0;
+  color: #6e6e6e;
+  font-family: "poppins-regular", sans-serif;
+  font-size: 1.35rem;
+  font-weight: normal;
+  letter-spacing: 0.08rem;
+  line-height: 1.65;
+  text-transform: uppercase;
+}
+
+/* Hide old template icons */
+#stats .icon-part {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  #stats {
+    padding: 8rem 0;
+  }
+
+  #stats .stats-list {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .stats-heading h2 {
+    font-size: 2.8rem;
+  }
+
+  #stats .stat {
+    min-height: auto;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #stats .stat {
+    padding: 3rem 2.4rem;
+    text-align: center;
+  }
+
+  #stats .stat-title {
+    max-width: none;
+  }
+}
