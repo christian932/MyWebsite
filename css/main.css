@@ -1743,7 +1743,7 @@ header .logo a {
  * ------------------------------------------------------------------- 
  */
 #resume {
-  padding-top: 12rem;
+  padding-top: 0;
   padding-bottom: 12rem;
 }
 
